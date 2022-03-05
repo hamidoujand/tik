@@ -7,7 +7,7 @@ it("returns current user if you're signed in ", async () => {
     .get("/api/users/currentuser")
     .set("Cookie", cookie)
     .send()
-    .expect(400);
+    .expect(200);
 
   expect(response.body.currentUser.email).toEqual("asdf@asdf.com");
 });
