@@ -1,0 +1,55 @@
+### SIGNUP
+POST https://localhost/api/users/signup
+Content-Type: application/json
+
+{
+    "email":"wolf@asdf.com",
+    "password":"asdfasdf"
+}
+
+
+
+### SIGNIN
+POST https://localhost/api/users/signin
+Content-Type: application/json
+
+{
+    "email":"wolf@asdf.com",
+    "password":"asdfasdf"
+}
+
+
+### SIGNOUT
+GET https://localhost/api/users/signout
+
+
+### CURRENT-USER
+GET https://localhost/api/users/currentuser
+
+
+
+
+### NOT FOUND
+GET https://localhost/api/users/werewolf
+
+
+### CREATE TICKET
+POST https://localhost/api/tickets
+Content-Type: application/json
+
+{
+    "title":"Concert",
+    "price":120
+}
+
+
+
+### CREATE ORDER
+POST https://localhost/api/orders
+Content-Type: application/json
+
+{
+    "ticketId":"621e70f9171fff0023bde7b9"
+}
+
+

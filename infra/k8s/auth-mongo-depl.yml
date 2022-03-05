@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-mongo-depl
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-mongo
+
+  template:
+    metadata:
+      labels:
+        app: auth-mongo
+    spec:
+      volumes:
+        - name: mongodb-storage
+          persistentVolumeClaim:
+            claimName: auth-database-pvc
+
+      containers:
+        - name: mongo
+          image: mongo
+          volumeMounts:
+            - name: mongodb-storage
+              mountPath: /data/db
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-mongo-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: auth-mongo
+  ports:
+    - name: auth-mongo
+      port: 27017
+      targetPort: 27017
+      protocol: TCP
